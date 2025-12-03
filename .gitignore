@@ -3,6 +3,12 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Output generated file ###
+monitor_state.json
+
+### Github Personal Access Token ###
+.token
+
 ### Maven Shade Plugin ###
 dependency-reduced-pom.xml
 

@@ -6,8 +6,7 @@ import picocli.CommandLine.Command;
         version = "jetflow 1.0",
         description = "JetFlow CLI tool",
         subcommands = {
-                MonitorCmd.class,
-                // Subcommands would be listed here
+            MonitorCmd.class
         })
 public class JetFlowCLI implements Runnable {
     public void run() {

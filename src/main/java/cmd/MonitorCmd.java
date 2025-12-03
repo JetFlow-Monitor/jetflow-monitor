@@ -2,6 +2,7 @@ package cmd;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import services.MonitorService;
 
 import java.util.concurrent.Callable;
 
@@ -18,12 +19,34 @@ public class MonitorCmd implements Callable<Integer> {
     private String token;
 
     @Override
-    public Integer call() throws Exception {
+    public Integer call() {
         System.out.printf("Monitoring repository: %s%n", repository);
-        System.out.println("Using token: " + token.substring(0, 4) + "****");
+        System.out.println("Using token: " + "****" + token.substring(token.length() - 4) + "\n");
 
-        // TODO: Implement monitoring logic here
+        try {
+            MonitorService monitorService = new MonitorService(repository, token);
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                System.out.println("\nShutting down monitoring service...");
+                monitorService.stop();
+            }));
 
-        return 0;
+            int intervalSeconds = 3; // Polling interval
+            monitorService.start(intervalSeconds);
+
+            System.out.println("✓ Connected to GitHub.");
+            System.out.println("✓ Initial state snapshot taken.");
+            System.out.println("Waiting for new workflow events... (Trigger a run to test)");
+
+            Thread.currentThread().join(); // Keep the main thread alive
+            return 0;
+        } catch (IllegalArgumentException e) {
+            // Specific error for Token/Repo issues
+            System.err.println("Configuration Error: " + e.getMessage());
+            return 1;
+        } catch (Exception e) {
+            // Generic error
+            System.err.println("Fatal Error:" + e.getMessage());
+            return 1;
+        }
     }
 }
