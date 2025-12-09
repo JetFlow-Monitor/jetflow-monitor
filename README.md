@@ -28,10 +28,10 @@ From the root directory of the project:
 
 ```bash
 # Compile and package the application into an executable JAR
-mvn clean package
+mvn clean package -DskipTests
 ```
 
-This command generates a fat JAR named something like `jetflow-1.0-SNAPSHOT.jar` in the `target/` directory.
+This command generates a fat JAR named `jetflow-1.0-SNAPSHOT-shaded.jar` in the `target/` directory.
 
 ### Generating a GitHub Token
 
@@ -58,7 +58,7 @@ We will run JetFlow for the first time. Since the state file doesn't exist, JetF
 2.  **Run the command:**
 
     ```bash
-    java -jar target/jetflow-1.0-SNAPSHOT.jar monitor [owner]/jetflow-test-repo <YOUR_PAT>
+    java -jar target/jetflow-1.0-SNAPSHOT-shaded.jar monitor [owner]/jetflow-test-repo <YOUR_PAT>
     ```
 
 3.  **Expected Output:**
