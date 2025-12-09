@@ -490,24 +490,24 @@ public class MonitorService {
         /** Number of seconds for minimum poller period */
         private static final int PAGE_SIZE = 50;
         /** Minimum poller period in seconds */
-        public static final int MAX_JOB_PAGES = 5;
+        private static final int MAX_JOB_PAGES = 5;
 
-        public static final int MIN_POLLER_PERIOD = 1;
+        private static final int MIN_POLLER_PERIOD = 1;
 
         /** Rate limit backoff duration in milliseconds */
-        public static final int RATE_LIMIT_BACKOFF_MS = 10000;
+        private static final int RATE_LIMIT_BACKOFF_MS = 10000;
         /** HTTP client connection timeout in seconds */
         private static final int HTTP_CONNECT_TIMEOUT_SECONDS = 10;
         /** HTTP request timeout in seconds */
-        public static final int HTTP_REQUEST_TIMEOUT_SECONDS = 20;
+        private static final int HTTP_REQUEST_TIMEOUT_SECONDS = 20;
         /** HTTP unauthorized status code */
-        public static final int HTTP_UNAUTHORIZED = 401;
+        private static final int HTTP_UNAUTHORIZED = 401;
         /** HTTP forbidden status code for rate limiting */
-        public static final int HTTP_FORBIDDEN_RATE_LIMIT = 403;
+        private static final int HTTP_FORBIDDEN_RATE_LIMIT = 403;
         /** HTTP not found status code */
-        public static final int HTTP_NOT_FOUND = 404;
+        private static final int HTTP_NOT_FOUND = 404;
         /** HTTP OK status code */
-        public static final int HTTP_OK = 200;
+        private static final int HTTP_OK = 200;
 
 
         // --- STRING CONSTANTS ---
